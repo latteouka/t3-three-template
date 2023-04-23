@@ -1,5 +1,5 @@
 # t3 + three + r3f
 
-This template integrate everything stack I use.
+This template integrate every stacks I am using.
 
 (use tailwindcss though)
