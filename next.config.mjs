@@ -28,6 +28,17 @@ const nextConfig = async () => ({
 
     return config;
   },
+
+  /**
+   * github will do the check by CI actions
+   */
+  typescript: {
+    ignoreBuildErrors: true,
+  },
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
+  swcMinify: true,
 });
 
 export default nextConfig;
