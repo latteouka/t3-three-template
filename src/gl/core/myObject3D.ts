@@ -1,9 +1,9 @@
+import * as THREE from "three";
 import { Update } from "./update";
 import { Resize } from "./resize";
-import { Object3D } from "three/src/core/Object3D";
 import type { VoidFunction } from "../type";
 
-export class MyObject3D extends Object3D {
+export class MyObject3D extends THREE.Object3D {
   private _updateHandler: VoidFunction;
   private _layoutHandler: VoidFunction;
 

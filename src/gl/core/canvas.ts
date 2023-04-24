@@ -1,17 +1,14 @@
+import * as THREE from "three";
 import { MyDisplay } from "../core/myDisplay";
-import { WebGLRenderer } from "three/src/renderers/WebGLRenderer";
-import { Scene } from "three/src/scenes/Scene";
 import { Rect } from "./rect";
-import { OrthographicCamera } from "three/src/cameras/OrthographicCamera";
-import { PerspectiveCamera } from "three/src/cameras/PerspectiveCamera";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 
 export class Canvas extends MyDisplay {
-  public cameraPers: PerspectiveCamera;
-  public cameraOrth: OrthographicCamera;
+  public cameraPers: THREE.PerspectiveCamera;
+  public cameraOrth: THREE.OrthographicCamera;
 
-  public renderer: WebGLRenderer;
-  public mainScene: Scene;
+  public renderer: THREE.WebGLRenderer;
+  public mainScene: THREE.Scene;
 
   public isRender = true;
   public renderSize: Rect = new Rect();
@@ -32,11 +29,11 @@ export class Canvas extends MyDisplay {
 
     // transparent
 
-    this.renderer = new WebGLRenderer(renderParam);
+    this.renderer = new THREE.WebGLRenderer(renderParam);
     this.renderer.autoClear = true;
     this.renderer.setClearColor(0xffffff, 1);
 
-    this.mainScene = new Scene();
+    this.mainScene = new THREE.Scene();
 
     this.cameraPers = this._makePersCamera();
     this._updatePersCamera(this.cameraPers, 10, 10);
@@ -50,14 +47,14 @@ export class Canvas extends MyDisplay {
     this._controls.enablePan = false;
   }
 
-  protected _makePersCamera(): PerspectiveCamera {
-    return new PerspectiveCamera(60, 1, 0.0000001, 50000);
+  protected _makePersCamera(): THREE.PerspectiveCamera {
+    return new THREE.PerspectiveCamera(60, 1, 0.0000001, 50000);
   }
-  protected _makeOrthCamera(): OrthographicCamera {
-    return new OrthographicCamera(1, 1, 1, 1);
+  protected _makeOrthCamera(): THREE.OrthographicCamera {
+    return new THREE.OrthographicCamera(1, 1, 1, 1);
   }
 
-  protected _updatePersCamera(camera: PerspectiveCamera, w = 10, h = 10) {
+  protected _updatePersCamera(camera: THREE.PerspectiveCamera, w = 10, h = 10) {
     const perspective = 400;
     camera.fov = (180 * (2 * Math.atan(h / 2 / perspective))) / Math.PI;
     camera.aspect = w / h;
@@ -65,7 +62,11 @@ export class Canvas extends MyDisplay {
     camera.updateProjectionMatrix();
   }
 
-  protected _updateOrthCamera(camera: OrthographicCamera, w = 10, h = 10) {
+  protected _updateOrthCamera(
+    camera: THREE.OrthographicCamera,
+    w = 10,
+    h = 10
+  ) {
     camera.left = -w * 0.5;
     camera.right = w * 0.5;
     camera.top = h * 0.5;

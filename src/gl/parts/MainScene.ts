@@ -1,15 +1,15 @@
+import * as THREE from "three";
 import { Func } from "../libs/func";
 import { Canvas } from "../core/canvas";
-import { Object3D } from "three/src/core/Object3D";
 import { Item } from "./Item";
 
 export class MainScene extends Canvas {
-  private _con: Object3D;
+  private _con: THREE.Object3D;
 
   constructor(opt: { el: HTMLCanvasElement }) {
     super(opt);
 
-    this._con = new Object3D();
+    this._con = new THREE.Object3D();
     this.mainScene.add(this._con);
 
     const item = new Item();
