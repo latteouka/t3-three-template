@@ -1,4 +1,4 @@
-import { type NextPage } from "next";
+import type { NextPage } from "next";
 import Head from "next/head";
 
 // import { api } from "@/utils/api";
@@ -8,6 +8,9 @@ const Home: NextPage = () => {
 
   return (
     <>
+      <Head>
+        <title>Index</title>
+      </Head>
       <main className="absolute left-0 top-0 z-20 flex h-screen w-full items-center justify-center text-red-500">
         t3 + three
       </main>
