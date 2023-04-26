@@ -38,7 +38,6 @@ const nextConfig = async () => ({
   eslint: {
     ignoreDuringBuilds: true,
   },
-  swcMinify: true,
 });
 
 export default nextConfig;
